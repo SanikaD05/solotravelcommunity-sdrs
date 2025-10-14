@@ -1,21 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Amplify } from 'aws-amplify';
-import awsExports from './aws-exports';
+import { AuthProvider } from 'react-oidc-context';
 
-// Configure Amplify
-Amplify.configure(awsExports);
+const cognitoAuthConfig = {
+  authority: "https://cognito-idp.eu-north-1.amazonaws.com/eu-north-1_3wqfGAuMB",
+  client_id: "1rvddogmhija1m6328u7r72rts",
+  redirect_uri: "https://<your-amplify-domain>/",
+  response_type: "code",
+  scope: "openid email profile",
+};
 
-// Create root and render app
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider {...cognitoAuthConfig}>
+      <App />
+    </AuthProvider>
   </React.StrictMode>
 );
-
-// Optional performance logging
-reportWebVitals();
