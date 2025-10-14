@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+textarea {
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0078d7;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
