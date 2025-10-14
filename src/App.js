@@ -4,9 +4,9 @@ function App() {
   const auth = useAuth();
 
   const signOutRedirect = () => {
-    const clientId = "<your-app-client-id>";
+    const clientId = "1rvddogmhija1m6328u7r72rts";
     const logoutUri = "https://main.d2e8e0ufe2zzmz.amplifyapp.com/";
-    const cognitoDomain = "https://<your-user-pool-domain>.auth.eu-north-1.amazoncognito.com";
+    const cognitoDomain = "https://eu-north-13wqfgaumb.auth.eu-north-1.amazoncognito.com";
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
   };
 
@@ -16,7 +16,11 @@ function App() {
   if (auth.isAuthenticated) {
     return (
       <div>
-        <h2>Welcome, {auth.user?.profile.email}</h2>
+        <pre>Hello: {auth.user?.profile.email}</pre>
+        <pre>ID Token: {auth.user?.id_token}</pre>
+        <pre>Access Token: {auth.user?.access_token}</pre>
+        <pre>Refresh Token: {auth.user?.refresh_token}</pre>
+
         <button onClick={() => auth.removeUser()}>Sign out</button>
       </div>
     );
@@ -24,7 +28,8 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => auth.signinRedirect()}>Sign in with Cognito</button>
+      <button onClick={() => auth.signinRedirect()}>Sign in</button>
+      <button onClick={() => signOutRedirect()}>Sign out</button>
     </div>
   );
 }
